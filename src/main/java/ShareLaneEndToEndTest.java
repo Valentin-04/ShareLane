@@ -7,7 +7,6 @@ import static com.codeborne.selenide.Selenide.open;
 public class ShareLaneEndToEndTest {
     public static final String URL = "https://www.sharelane.com/cgi-bin/register.py";
     public static final String NUMBER = "11111";
-    public static final Object REGISTER = By.cssSelector("[value=Register]");
 
     @Test
     public void signUpTestZipCodeFailed() {
@@ -22,8 +21,8 @@ public class ShareLaneEndToEndTest {
         open(URL);
         $(By.name("zip_code")).sendKeys(NUMBER);
         $(By.cssSelector("[value=Continue]")).click();
-        Object result = REGISTER;
-        Assert.assertEquals(result, REGISTER);
+        Object result = $(By.cssSelector("[value=Register]")).getValue();
+        Assert.assertEquals(result, "Register");
     }
     @Test
     public void signUpTestFormFailed() {
